@@ -5,13 +5,14 @@
   "description": "My Electron application description",
   "main": "public/electron.js",
   "scripts": {
-    "start": "electron-forge start",
+    "start-ngin": "electron-forge start",
     "package": "electron-forge package",
     "make": "electron-forge make",
     "publish": "electron-forge publish",
-    "a-start": "webpack serve",
-    "a-watch": "webpack --watch",
-    "a-build": "webpack"
+    "start": "webpack serve",
+    "watch": "webpack --watch",
+    "build": "set \"NODE_ENV=production\" && webpack",
+    "build-dev": "webpack"
   },
   "private": true,
   "keywords": [],
@@ -55,11 +56,14 @@
     "webpack-dev-server": "^4.7.3"
   },
   "devDependencies": {
+    "@babel/core": "^7.16.7",
+    "@babel/preset-env": "^7.16.8",
     "@electron-forge/cli": "^6.0.0-beta.63",
     "@electron-forge/maker-deb": "^6.0.0-beta.63",
     "@electron-forge/maker-rpm": "^6.0.0-beta.63",
     "@electron-forge/maker-squirrel": "^6.0.0-beta.63",
     "@electron-forge/maker-zip": "^6.0.0-beta.63",
+    "babel-loader": "^8.2.3",
     "electron": "16.0.7"
   }
 }
