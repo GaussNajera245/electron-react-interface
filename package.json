@@ -7,12 +7,13 @@
   "scripts": {
     "start-ngin": "electron-forge start",
     "package": "electron-forge package",
-    "make": "electron-forge make",
+    "make": "set \"NODE_ENV=production\" && electron-forge make",
     "publish": "electron-forge publish",
-    "start": "webpack serve",
+    "start-front": "webpack serve",
     "watch": "webpack --watch",
     "build": "set \"NODE_ENV=production\" && webpack",
-    "build-dev": "webpack"
+    "build-dev": "webpack",
+    "start": "concurrently \"webpack serve\" \"electron-forge start\""
   },
   "private": true,
   "keywords": [],
@@ -50,22 +51,26 @@
   },
   "dependencies": {
     "electron-squirrel-startup": "^1.0.0",
-    "serialport": "^9.2.8",
-    "webpack": "^5.66.0",
-    "webpack-cli": "^4.9.1",
-    "webpack-dev-server": "^4.7.3"
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "serialport": "^9.2.8"
   },
   "devDependencies": {
     "@babel/core": "^7.16.7",
     "@babel/preset-env": "^7.16.8",
+    "@babel/preset-react": "^7.16.7",
     "@electron-forge/cli": "^6.0.0-beta.63",
     "@electron-forge/maker-deb": "^6.0.0-beta.63",
     "@electron-forge/maker-rpm": "^6.0.0-beta.63",
     "@electron-forge/maker-squirrel": "^6.0.0-beta.63",
     "@electron-forge/maker-zip": "^6.0.0-beta.63",
     "babel-loader": "^8.2.3",
+    "concurrently": "^7.0.0",
     "css-loader": "^6.5.1",
     "electron": "16.0.7",
-    "mini-css-extract-plugin": "^2.5.0"
+    "mini-css-extract-plugin": "^2.5.0",
+    "webpack": "^5.66.0",
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^4.7.3"
   }
 }

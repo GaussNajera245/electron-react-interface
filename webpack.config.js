@@ -13,17 +13,21 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.css$/i,
+                test: /\.s?css$/i,
                 use: [MiniCssExtractPlugin.loader, "css-loader"]
               },
             {
-                test: /\.js$/,
+                test: /\.jsx?$/,
                 exclude: /node_modules/,
                 use: {
                     loader: "babel-loader"
                 }
             }
         ]
+    },
+
+    resolve: {
+        extensions: [".js", ".jsx"]
     },
     devtool: "source-map",
     devServer: {

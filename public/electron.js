@@ -9,6 +9,9 @@ if (require('electron-squirrel-startup')) {
   app.quit();
 }
 
+
+console.log({'mein': process.env.NODE_ENV});
+
 const createWindow = () => {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
@@ -19,7 +22,11 @@ const createWindow = () => {
   // and load the index.html of the app.
 
 // console.log('A', path.join(__dirname, '..//dist//index.html'))
+// if(process.env.NODE_ENV === 'production'){
   mainWindow.loadFile(path.join(__dirname, '..//dist//index.html'));
+// }else{
+//   mainWindow.loadURL("http://localhost:8080/")
+// }
 
   // Open the DevTools.
   mainWindow.webContents.openDevTools();
