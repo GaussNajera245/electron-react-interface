@@ -1,3 +1,5 @@
+import "./styles/index.css"
+
 const elvenShield= {
     A:90,
     B:90,
@@ -25,7 +27,7 @@ setInterval(()=>{
     let A = Math.floor()
     i = (i >= 255) ? 5 : i;
     i+=10;
-    DOM.style.backgroundColor =  `rgb(${rand(i)},${rand(i)},${rand(i)})`;
+    DOM.style.backgroundColor =  `rgb(${rand(i)-5},${rand(i)},${rand(i)})`;
 },500);
 
 
