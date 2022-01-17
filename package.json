@@ -5,23 +5,28 @@
   "description": "My Electron application description",
   "main": "public/electron.js",
   "scripts": {
-    "start-ngin": "electron-forge start",
-    "package": "electron-forge package",
-    "make": "set \"NODE_ENV=production\" && electron-forge make",
-    "publish": "electron-forge publish",
-    "start-front": "webpack serve",
-    "watch": "webpack --watch",
-    "build": "set \"NODE_ENV=production\" && webpack",
     "build-dev": "webpack",
-    "start": "concurrently \"webpack serve\" \"electron-forge start\""
+    "watch": "webpack --watch",
+    "start-front": "webpack serve",
+    "publish": "electron-forge publish",
+    "package": "electron-forge package",
+    "start-ngin": "electron-forge start",
+    "build": "set \"NODE_ENV=production\" && webpack",
+    "make": "set \"NODE_ENV=production\" && electron-forge make",
+    "start": "concurrently \"webpack serve\" \" set \"NODE_ENV=development\" &&electron-forge start\""
   },
   "private": true,
   "keywords": [],
-  "author": {
+  "author": { 
     "name": "GustavoNM",
     "email": "dev@gruposeara.com"
   },
   "license": "MIT",
+  "browser": {
+    "fs": false,
+    "path": false,
+    "os": false
+  },
   "config": {
     "forge": {
       "packagerConfig": {},

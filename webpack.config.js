@@ -2,11 +2,11 @@
 const { default: MiniCssExtractPlugin } = require('mini-css-extract-plugin');
 let mode = "development";
 
-
 if(process.env.NODE_ENV === "production"){
     mode = "production";
 };
 
+console.table({A:process.env.NODE_ENV ,B:process.env.NODE_ENV === "production", mode});
 module.exports = {
     mode,
     plugins: [ new MiniCssExtractPlugin()],

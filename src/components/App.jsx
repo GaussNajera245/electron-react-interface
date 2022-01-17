@@ -1,52 +1,39 @@
-import "../styles/index.css"
-import React from 'react';
+import "../styles/index.css";
+import Recipes from './Recipes';
+import React, { useEffect, useState } from 'react';
+const { ipcRenderer } = window.require('electron')
+// const electron = window.require("electron")
+// const { ipcRenderer } = electron;
 
-export default function App(){
-    
+export default function App() {
+    const [info, setInfo] = useState("Don't know:(");
+    useEffect(() => {
 
-const elvenShield= {
-    A:90,
-    B:90,
-    C:90,
-    D:90
-}
+        const rand = I => (I - Math.floor(Math.random() * 10));
+        let DOM = document.getElementsByTagName('body')[0], i = 5;
+        setInterval(() => {
+            i = (i >= 255) ? 5 : i;
+            i += 10;
+            DOM.style.backgroundColor = `rgb(${rand(i) - 5},${rand(i)},${rand(i)})`;
+        }, 500);
 
-const elvenShield1= {
-    A1:90,
-    B1:90,
-    C1:90,
-    D1:90
-}
+        console.get = () => {
+            ipcRenderer.invoke('info')
+                .then(res => setInfo(`${res}`))
+                .catch(e => console.table(e));
+        };
 
-const A = {
-    ...elvenShield1,
-    ...elvenShield,
-};
-
-function rand(I){
-    return (I - Math.floor(Math.random()*10))
-}
-let DOM = document.getElementsByTagName('body')[0], i=5;
-setInterval(()=>{
-    let A = Math.floor()
-    i = (i >= 255) ? 5 : i;
-    i+=10;
-    DOM.style.backgroundColor =  `rgb(${rand(i)-5},${rand(i)},${rand(i)})`;
-},500);
-
-
-console.table(A);
-
-
+    }, []);
 
     return (
         <div>
             <section className="hero"> </section>
             <main>
                 <section className="hero">
-                <h1>I'm reahhct now b?</h1> 
-                <h3>kynccc</h3> 
+                    <h1>Current Status: </h1>
+                    <h3>{info}</h3>
                 </section>
+                <Recipes />
             </main>
         </div>
     )
